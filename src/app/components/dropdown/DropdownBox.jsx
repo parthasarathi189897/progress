@@ -1,6 +1,11 @@
 import React from 'react';
 
-/*Component for each tab headers*/
+//Component for dropdown header box
+/**
+ * [Stateless/Functional react component.]
+ * @param  {[Object]} props [properties that are being passed from parent.]
+ * @return {[Object]}       [jsx]
+ */
 const DropdownBox=(props) => {
 
   const selectedData=props.selectedData;
@@ -17,10 +22,12 @@ const DropdownBox=(props) => {
     </div>
   );
 };
-DropdownBox.propTypes={
+//prop types for this component
+DropdownBox.propTypes = {
   selectedData: React.PropTypes.object
 };
-DropdownBox.defaultProps={
+//Default properties for the component
+DropdownBox.defaultProps = {
   selectedData: {
     id: "select",
     value: "Select ..."

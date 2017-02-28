@@ -1,11 +1,21 @@
 import React from 'react';
 
+//Component for buttons
+/**
+ * [Stateless/Functional react component.]
+ * @param  {[Object]} props [properties that are being passed from parent.]
+ * @return {[Object]}       [jsx]
+ */
 const Button = (props) => {
-	const _butClick = () => {
-		props.butClick(props.butVal);
+	/**
+	 * [click method for buttons. On execution it invokes the execution of parent method with the value of button clicked.]
+	 * @return {[undefined]} [no return from the method]
+	 */
+	const buttonClick = () => {
+		props.buttonClick(props.butVal);
 	};
 	return (
-		<button type='submit' onClick={_butClick}>{props.butVal}</button>
+		<button className='progress-button' type='submit' onClick={buttonClick}>{props.butVal}</button>
 	);
 };
 

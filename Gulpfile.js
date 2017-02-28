@@ -18,6 +18,7 @@ var config = {
     DEST_BUILD: 'src/build'
 };
 
+
 gulp.task('webpack', [], function() {
     return gulp.src(config.ALL) //gulp looks for all source files under specified config
         .pipe(sourcemaps.init()) // creates a source map which would be very helpful for debugging by maintaining the actual source code structure
@@ -55,12 +56,7 @@ gulp.task("less", function(){
         .pipe(gulp.dest(path.join(__dirname, '/build')));
   });
 
-
-
-
 gulp.task('watch', function() {
     gulp.watch(config.ALL, ['webpack','less']);
 });
-
-
 gulp.task('default', ['webpack-dev-server', 'watch']);

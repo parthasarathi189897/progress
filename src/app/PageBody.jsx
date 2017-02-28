@@ -9,9 +9,10 @@ export default class PageBody extends Component{
 		};
 	}
 	componentWillMount(){
+		//Ajax call to fetch data on page refresh
 		const _this = this;
 		const url = 'http://pb-api.herokuapp.com/bars';
-		let httpRequest = new XMLHttpRequest();
+		let httpRequest = new XMLHttpRequest(); //Created new httpRequest obhject
 		if (!httpRequest) {
 	      alert('Giving up :( Cannot create an XMLHTTP instance');
 	      return false;
@@ -20,10 +21,10 @@ export default class PageBody extends Component{
 	    httpRequest.open('GET', url);
 	    httpRequest.send();
 
+	    //Method to get executed on fetch of data
 	    function onFetch(){
 	    	if (httpRequest.readyState === XMLHttpRequest.DONE) {
 		      if (httpRequest.status === 200) {
-		      	console.log(httpRequest.responseText);
 		      	const result = JSON.parse(httpRequest.responseText);
 		        _this.setState({
 		        	data: result

@@ -3,7 +3,12 @@ import Bar from './Bar';
 import Dropdown from './dropdown/Dropdown';
 import Button from './Button';
 
+//Component for progress Bar 
 class ProgressBar extends Component{
+	/**
+	 * [constructor : constructor of the component to initialize state and tp pass props to parent]
+	 * @param  {[object]} props [properties that this component inherits from the parent component]
+	 */
 	constructor(props){
 		super(props);
 		this.state = {
@@ -16,12 +21,24 @@ class ProgressBar extends Component{
 			selectedBar: 1
 		}
 	}
+	/**
+	 * [componentWillMount : React life cycle method, gets executed before component gets mounted]
+	 * @return {[undefined]} [no return]
+	 */
 	componentWillMount(){
 		this._setInitials(this.props);
 	}
+	/**
+	 * [componentWillReceiveProps : React life cycle method, gets executed when component gets modified properties]
+	 * @return {[undefined]} [no return]
+	 */
 	componentWillReceiveProps(nextProps){
 		this._setInitials(nextProps);
 	}
+	/**
+	 * [_setInitials : Method to initialize the component properties based on the passed props]
+	 * @return {[undefined]} [no return]
+	 */
 	_setInitials(props){
 		const data = props.data;
 		const barData = data.bars !== undefined ? data.bars : [];
@@ -36,23 +53,39 @@ class ProgressBar extends Component{
 			dropdownData: dropdownData
 		});
 	}
+	/**
+	 * [Method to get the individual progress bars.]
+	 * @return {[Array]} [return an array containing the list of Bars corresponding to each data point.]
+	 */
 	_getBars = () => {
 		const data = this.props.data;
 		const limit = data.limit !== undefined ? data.limit : 0;
 		const barData = this.state.barData;
-		return barData.map((item,index) => {
-			return (<Bar progressData={item} limit={limit} key={'progress-bar-'+item+'-'+index}/>);
-		});
+		const barList = barData.map((item,index) =>
+		    <Bar progressData={item} limit={limit} key={'progress-bar-'+index} barNum={index}/>
+		);
+		return barList;
 	}
+	/**
+	 * [Method to get the list of button components]
+	 * @return {[Array]} [returns an array containg the list of buttons corresponding to each data]
+	 */
 	_getButtons = () => {
 		const _this = this;
 		const data = this.props.data;
 		const butData = data.buttons !== undefined ? data.buttons : [];
-		return butData.map((item,index) => {
-			return (<Button butVal={item} butClick={_this.butClick} key={'progress-button-'+item+'-'+index}/>);
-		});
+		const buttonList = butData.map((item,index) =>
+		    <Button butVal={item} buttonClick={_this.buttonClick} key={'progress-button-'+index}/>
+		);
+		console.log(buttonList);
+		return buttonList;
 	}
-	butClick = (butVal) => {
+	/**
+	 * [method gets executed on click of buttons]
+	 * @param  {[Number]} butVal [value of the button clicked.]
+	 * @return {[undefined]}        [no return from the method]
+	 */
+	buttonClick = (butVal) => {
 		const state = this.state;
 		const barData = state.barData;
 		const selectedBar = state.selectedBar;
@@ -65,8 +98,12 @@ class ProgressBar extends Component{
 		this.setState({
 			barData: modifiedBars
 		});
-
 	}
+	/**
+	 * [click method for the dropdown rows.]
+	 * @param  {[Object]} clickedData [value of the dropdown row clicked]
+	 * @return {[undefined]}        [no return from the method]
+	 */
 	dropdownClick = (clickedData) =>{
 		const selectedBar = (clickedData.id).split('#')[1];
 		this.setState({
@@ -74,12 +111,16 @@ class ProgressBar extends Component{
 			selectedBar: selectedBar
 		});
 	}
+	/**
+	 * [render : life cycle method gets executed to render the jsx tags of the component]
+	 * @return {[Object]} [description]
+	 */
 	render(){
 		const state = this.state;
 		return (<div className='progress-bar-page'>
 			{this._getBars()}
-		<article>
-			<div>
+		<article className='action-section'>
+			<div className='action-dropdown'>
 				<Dropdown
 				activeInd={false}
 				selectedData={state.dropdownSelected}
@@ -87,13 +128,11 @@ class ProgressBar extends Component{
 				maskInd={false}
 				rowClick={this.dropdownClick}/>
 			</div>
-			<div>
+			<div className='action-button'>
 				{this._getButtons()}
 			</div>
 		</article>
 		</div>);
 	}
-
 };
-
 export default ProgressBar;

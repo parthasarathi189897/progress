@@ -1,45 +1,79 @@
-.progress-bar-cont {
-  height: 35px;
-  border: 1px solid #ccc;
+.progress-bar-page {
+  width: 60%;
+  margin: 0 auto;
+}
+.progress-bar-cont label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.progress {
+  height: 20px;
   margin-bottom: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .progress-bar {
-  background-color: red;
-  height: 35px;
+  font-size: 12px;
+  color: #fff;
   text-align: center;
+  height: 100%;
+  width: 0%;
+  line-height: 20px;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: width 0.55s;
+  transition: width 0.55s;
+}
+.progress-button {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  min-width: 100px;
+  background-color: #FFF;
+  padding: 6px 12px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.action-section {
+  display: -webkit-flex;
+  margin-top: 20px;
+}
+.action-section .action-dropdown {
+  -webkit-flex: 1;
+}
+.action-section .action-button {
+  -webkit-flex: 4;
+  margin-left: 15px;
 }
 .dropdown-cont {
   position: relative;
   height: 32px;
 }
 .dropdown-box {
-  font-size: 13px;
+  font-size: 14px;
   color: #666;
   text-align: left;
-  border: 1px solid #A9A9A9;
-  border-radius: 2px;
-  line-height: 30px;
-  padding: 0px 6px 0px 6px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  line-height: 1.42857143;
   cursor: pointer;
-}
-.down-arrow {
-  width: 12px;
-  height: 15px;
-  background-size: 12px;
-  position: absolute;
-  right: 6px;
-  top: 9px;
 }
 .dropdown-window {
   position: absolute;
   left: 0px;
   right: 0px;
   top: 42px;
-  height: 122px;
   border: 1px solid #A9A9A9;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-transition-duration: .55s;
-  -webkit-transition-property: height;
   background-color: #FFF;
   z-index: 1;
   text-align: left;
@@ -47,13 +81,10 @@
 .dropdown-window ul {
   margin: 0px 8px;
   overflow-y: auto;
-}
-.dropdown-visible {
-  height: 122px;
+  padding: 0px;
 }
 .dropdown-hidden {
-  height: 0px;
-  visibility: hidden;
+  display: none;
 }
 .dropdown-row {
   font-size: 13px;

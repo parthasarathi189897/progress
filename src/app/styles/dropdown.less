@@ -1,36 +1,23 @@
-
+@import './custom-mixins.less';
 .dropdown-cont {
   position: relative;
   height: 32px;
 }
 .dropdown-box {
-  font-size: 13px;
-  color: #666;
-  text-align: left;
-  border: 1px solid #A9A9A9;
-  border-radius: 2px;
-  line-height: 30px;
-  padding: 0px 6px 0px 6px;
+  .font(14px,#666,left);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  line-height: 1.42857143;
   cursor: pointer;
-}
-.down-arrow {
-  width: 12px;
-  height: 15px;
-  background-size: 12px;
-  position: absolute;
-  right: 6px;
-  top: 9px;
 }
 .dropdown-window {
   position: absolute;
   left: 0px;
   right: 0px;
   top: 42px;
-  height: 122px;
   border: 1px solid #A9A9A9;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-transition-duration: .55s;
-  -webkit-transition-property: height;
   background-color: #FFF;
   z-index: 1;
   text-align: left;
@@ -38,18 +25,13 @@
 .dropdown-window ul {
   margin: 0px 8px;
   overflow-y: auto;
-}
-.dropdown-visible {
-  height: 122px;
+  padding: 0px;
 }
 .dropdown-hidden {
-  height: 0px;
-  visibility: hidden;
+  display: none;
 }
 .dropdown-row {
-  font-size: 13px;
-  color: #666;
-  text-align: left;
+  .font(13px,#666,left);
   cursor: pointer;
   line-height: 40px;
   border-bottom: 1px solid #A9A9A9;
