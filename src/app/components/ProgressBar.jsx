@@ -77,7 +77,6 @@ class ProgressBar extends Component{
 		const buttonList = butData.map((item,index) =>
 		    <Button butVal={item} buttonClick={_this.buttonClick} key={'progress-button-'+index}/>
 		);
-		console.log(buttonList);
 		return buttonList;
 	}
 	/**

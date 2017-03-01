@@ -18,7 +18,7 @@ const DropdownBox=(props) => {
   return(
     <div className='dropdown-box' onClick={_onClick}>
       <label>{selectedData.value}</label>
-      <div className='down-arrow'></div>
+      <div className='dropdown-caret'></div>
     </div>
   );
 };

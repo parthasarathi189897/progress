@@ -8,6 +8,7 @@ var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = require("./webpack.config.js");
 var stream = require('webpack-stream');
 var less = require('gulp-less');
+var jest = require('gulp-jest').default;
 var path = require('path');
 
 var config = {
@@ -25,7 +26,7 @@ gulp.task('webpack', [], function() {
         .pipe(stream(webpackConfig)) // blend in the webpack config into the source files
         .pipe(uglify()) // minifies the code for better compression
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(config.DEST_BUILD));
+        .pipe(gulp.dest(path.join(__dirname, '/build')));
 });
 
 
@@ -49,12 +50,13 @@ gulp.task("webpack-dev-server", function(callback) {
 
 
 gulp.task("less", function(){
-       return gulp.src('src/app/styles/index.less')
-        .pipe(less({
-          paths: [ path.join(__dirname, 'src/app/styles') ]
-        }))
-        .pipe(gulp.dest(path.join(__dirname, '/build')));
-  });
+   return gulp.src('src/app/styles/index.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'src/app/styles') ]
+    }))
+    .pipe(gulp.dest(path.join(__dirname, '/build')));
+});
+
 
 gulp.task('watch', function() {
     gulp.watch(config.ALL, ['webpack','less']);
